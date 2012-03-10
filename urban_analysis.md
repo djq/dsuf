@@ -1,30 +1,48 @@
-# Overview of class
+## Overview of class
+
+#### Part 1: R
 
 * Basics: interface, loading data, installing packages
 * `ggplot2`: visualization and exploration
-* `sp` and `maptools`: plot quick maps
-* `googleVis` (if there is time)
 
-### Datasets
-The datasets we will use are available [here](https://github.com/djq/dusp_viz/blob/master/data.zip?raw=true). Make a folder for this class and unzip them there.
+#### Part 2: QGIS
 
-## Basic commands for R
+* Basics: loading data, installing plugins
+* Simple calculations, spatial analysis
+
+#### Part 3: If we have time….
+
+*  joining dataframes
+* `sp` and `maptools`: plot quick maps using `R`
+* `googleVis`: make quick interative web-maps
+
+### Data
+The data we will use are available [here](https://github.com/djq/dusp_viz/blob/master/data.zip?raw=true). Make a folder for this class on your computer (preferably not on your desktop) and unzip the files into this folder.
+
+
+
+## Part 1: R
+### Basic commands for R
 
 This is a comment:
 
 	# this line is ignored
 	
-First, we are going to start by installing a package:
+Set your working directory:
 
-	install.packages('ggplot2')	
+	setwd('/Users/djq/4.474/')	# set your working directory
 
-Do this for `sp` and `maptools` also.
 
-Loading data into a dataframe:
+#### Reading information from a csv file
+
+To read from a `csv` file, type the following: 
+
+	dataSample <- read.csv('pathToFile/file.csv')  # this assumes a csv file with headers
+	
+Notes about dataframes:
 
 	# a dataframe is similar to an excel-spreadsheet
 	# 'dataSample' is a variable; you can use any name here
-	dataSample <- read.csv('pathToFile/file.csv')  # this assumes a csv file with headers
 	
 To see the top part of your data use the `head` command:
 
@@ -33,18 +51,19 @@ To see the top part of your data use the `head` command:
 To access a column use the $ notation:
 
 	dataSample$colName
+
 	
-### Reading information from a shapefile
+#### Reading information from a shapefile
 
 To read in a `dbf` file you can use the following command:
 	
-	library(foreign) 												# load a library that is installed by default in R
-	setwd('/Users/djq/Dropbox/dusp_viz')							# set your working directory
-	attributeTable <- read.dbf('pathToShapefile/shapefileName.dbf') # note this is to the '.dbf' part of the shapefile. We are ignoring the spatial information
+	library(foreign) # load a library that is installed by default in R
+	
+	attributeTable <- read.dbf('pathToShapefile/shapefileName.dbf') # note that this is the '.dbf' part of the shapefile. We are ignoring the spatial information here, but will examine it later
 
 The first shapefile we are using here is a sample of tax-assessors parcels from New York. Open it in QGIS to examine it, then read in the attribute table:
 
-	mn <- read.dbf('data/manhattan/mn_small.dbf')
+	mn <- read.dbf('data/mn_small.dbf')
 	
 We are going to focus on exploring non-spatial patterns first.
 
@@ -119,7 +138,13 @@ Now, make a plot by these groups:
 	plot <- ggplot(data=mn, aes(YearBuilt, BldgArea)) + geom_point()
 	ggsave()
 	ggsave(plot, file="plot.pdf", width=4, height=4)
-	
+
+## Part 2: QGIS
+
+
+
+
+## Part 3:	
 
 ###	Joining more data to a dataframe
 
