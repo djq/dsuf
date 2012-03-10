@@ -20,12 +20,11 @@ Please check that you can open `QGIS` also. When installing, there is no need to
 
 ### ggplot2
 
-[ggplot2](http://had.co.nz/ggplot2/) is a visualization and analysis package for R. We are going to use it to illustrate how multiple dimensions of measurement can be shown on a plot, and to illustrate how data can be grouped. 
+[ggplot2](http://had.co.nz/ggplot2/) is a visualization and analysis package for R. We are going to use it to illustrate how multiple dimensions of measurement can be shown on a plot, and to illustrate how data can be grouped. Both of these features are very useful for identifying patterns when examining data from cities.
 
 ### sp / Maptools
 
-These packages enable plotting of spatial data directly in `R`. Depending on how much time we have in class we may not use them but I will include instructions about their use. 
-
+These packages enable plotting of spatial data directly in `R`. Depending on how much time we have in class we may not use them but I will include instructions about their use at the end of the notes.
 
 
 ### Useful references:
