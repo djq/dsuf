@@ -14,7 +14,7 @@
 
 *  joining dataframes
 * `sp` and `maptools`: plot quick maps using `R`
-* `googleVis`: make quick interative web-maps
+* `googleVis`: make quick interactive web-maps
 
 ### Data
 The data we will use are available [here](https://github.com/djq/dusp_viz/blob/master/data.zip?raw=true). Make a folder for this class on your computer (preferably not on your desktop) and unzip the files into this folder.
@@ -72,7 +72,7 @@ We are going to focus on exploring non-spatial patterns first.
 * Examining the output of `summary(mn)`
 	
 
-## ggplot2
+### ggplot2
 
 [ggplot2](http://had.co.nz/ggplot2/) is a visualization and analysis package for R. We are going to focus on using some of the plotting functions, and illustrate facet-plotting. First load the library into your workspace:
 
@@ -130,14 +130,21 @@ Now, make a plot by these groups:
 	# facet wrap by zipcode
 	ggplot(data=mn, aes(YearBuilt, BldgArea)) + geom_point() + facet_wrap(~ZipCode, nrow = 2)
 	
-#### Try:
+##### Try:
 * extending these plots by adding the previous dimensions, ilustrated by size or color.
 
-### Saving your plots
+#### Saving your plots
 	
 	plot <- ggplot(data=mn, aes(YearBuilt, BldgArea)) + geom_point()
 	ggsave()
 	ggsave(plot, file="plot.pdf", width=4, height=4)
+	
+This will save your plot in your working directory. 
+
+To summarize, we have now read in spatial data (ignoring the spatial component), analyzed the data, and produce a plot. 
+
+
+
 
 ## Part 2: QGIS
 
@@ -220,7 +227,7 @@ Scale-bars and further refinement are not very easy to include. My preference is
 
 This example slighlty modified from [here](http://gis.stackexchange.com/questions/3310/what-is-the-most-useful-spatial-r-trick)
 
-#### Try:
+##### Try:
 
 * Changing interval type of breaks
 * Plotting the tax lots for one ZipCode, by one dimension
