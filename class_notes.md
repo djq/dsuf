@@ -19,7 +19,7 @@
 * `googleVis`: make quick interactive web-maps
 
 ### Data
-The data we will use are available [here](https://github.com/djq/dusp_viz/blob/master/data.zip?raw=true). Make a folder for this class on your computer (preferably not on your desktop) and unzip the files into this folder.
+The data we will use are available [here](). Make a folder for this class on your computer (preferably not on your desktop) and unzip the files into this folder.
 
 
 
