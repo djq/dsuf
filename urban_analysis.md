@@ -28,11 +28,12 @@ You will be asked where you want to download the package from. You can type `74`
 	
 Please check that you can open `QGIS` also. When installing `QGIS`, there is no need to choose the sample datasets provided. As the class time is short, we will start on Tuesday assuming that you have downloaded and installed these packages and programs.
 
-### ggplot2
+### R Packages
+#### ggplot2
 
 [ggplot2](http://had.co.nz/ggplot2/) is a visualization and analysis package for R. We are going to use it to illustrate how multiple dimensions of measurement can be shown on a plot, and to illustrate how data can be grouped. Both of these features are very useful for identifying patterns when examining data from cities.
 
-### sp / maptools / googleVis
+#### sp / maptools / googleVis
 
 These packages enable plotting of spatial data directly in `R`. Depending on how much time we have in class we may not discuss them in class but I will include instructions about their use in the notes.
 
