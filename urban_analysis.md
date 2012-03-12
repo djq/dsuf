@@ -19,7 +19,9 @@ You will be asked where you want to download the package from. You can type `74`
 	install.packages('sp')	
 	# do the same for 'maptools'
 	
-Please check that you can open `QGIS` also. When installing `QGIS`, there is no need to choose the sample datasets provided. As the class time is short, we will start on Tuesday assuming that you have downloaded and installed these packages and programs.
+Please check that you can open `QGIS` also. When installing `QGIS`, there is no need to choose the sample datasets provided. If you are using a Mac, you need to install GDAL first, and then QGIS. 
+
+As the class time is short, we will start on Tuesday assuming that you have downloaded and installed these packages and programs.
 
 ### ggplot2
 
