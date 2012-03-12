@@ -1,7 +1,7 @@
 
 # Programs to install
 
-We will be using the following software programs during class. The programs are all open-source and cross platform (win/mac/linux).
+We will be using the following software programs during class. The programs are all open-source and work on mac, windows or linux.
 
 * R: [http://www.r-project.org/](http://www.r-project.org/)
 	* mac: [mac-pkg](http://cran.mtu.edu/bin/macosx/R-2.14.2.pkg)
