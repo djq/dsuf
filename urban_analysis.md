@@ -13,7 +13,7 @@ We will be using the following software programs during class. The programs are 
 	* linux: [packages](http://rstudio.org/download/deskto) 
 		
 * QGIS: [http://www.qgis.org/](http://www.qgis.org/)
-	* 	mac: [gdal](http://www.kyngchaos.com/files/software/frameworks/GDAL_Complete-1.9.dmg) + [qgis-dmg](http://www.kyngchaos.com/files/software/qgis/Qgis-1.7.4-4.dmg) Install GDAL first, and then QGIS. 
+	* 	mac: [gdal](http://www.kyngchaos.com/files/software/frameworks/GDAL_Complete-1.9.dmg) + [GSL](http://www.kyngchaos.com/files/software/frameworks/GSL_Framework-1.15-2.dmg) + [qgis-dmg](http://www.kyngchaos.com/files/software/qgis/Qgis-1.7.4-4.dmg) Install GDAL, GSL and then QGIS. 
 	* 	windows: [qgis-exe](http://www.qgis.org/downloads/QGIS-OSGeo4W-1.7.4-d211b16-Setup.exe)
 	* 	linux: [instructions](http://hub.qgis.org/projects/quantum-gis/wiki/Download#Linux)
 
