@@ -6,6 +6,9 @@ We will be using the following software programs during class. The programs are 
 * R: [http://www.r-project.org/](http://www.r-project.org/)
 * Rstudio: [http://rstudio.org/](http://rstudio.org/)
 * QGIS: [http://www.qgis.org/](http://www.qgis.org/)
+	* 	[mac](http://www.kyngchaos.com/files/software/qgis/Qgis-1.7.4-4.dmg)
+	* 	[win](http://www.qgis.org/downloads/QGIS-OSGeo4W-1.7.4-d211b16-Setup.exe)
+	* 	[linux](http://hub.qgis.org/projects/quantum-gis/wiki/Download#Linux)
 
 Install `R` first, then install `RStudio`. After you install `R` try downloading and installing a package by pasting the following line into the command line editor:
 
