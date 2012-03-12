@@ -12,7 +12,8 @@ We will be using the following software programs during class. The programs are 
 	* windows: [windows-exe](http://download1.rstudio.org/RStudio-0.95.262.exe) 
 	* linux: [packages](http://rstudio.org/download/desktop) 
 * QGIS: [http://www.qgis.org/](http://www.qgis.org/)
-	* 	mac: [gdal](http://www.kyngchaos.com/files/software/frameworks/GDAL_Complete-1.9.dmg) + [qgis-dmg](http://www.kyngchaos.com/files/software/qgis/Qgis-1.7.4-4.dmg) 
+	* 	mac: [gdal](http://www.kyngchaos.com/files/software/frameworks/GDAL_Complete-1.9.dmg) + [qgis-dmg](http://www.kyngchaos.com/files/software/qgis/Qgis-1.7.4-4.dmg) Install GDAL first, and then QGIS. 
+
 	* 	windows: [qgis-exe](http://www.qgis.org/downloads/QGIS-OSGeo4W-1.7.4-d211b16-Setup.exe)
 	* 	linux: [instructions](http://hub.qgis.org/projects/quantum-gis/wiki/Download#Linux)
 
@@ -25,9 +26,7 @@ You will be asked where you want to download the package from. You can type `74`
 	install.packages('sp')	
 	# do the same for 'maptools'
 	
-Please check that you can open `QGIS` also. When installing `QGIS`, there is no need to choose the sample datasets provided. If you are using a Mac, you need to install GDAL first, and then QGIS. 
-
-As the class time is short, we will start on Tuesday assuming that you have downloaded and installed these packages and programs.
+Please check that you can open `QGIS` also. When installing `QGIS`, there is no need to choose the sample datasets provided. As the class time is short, we will start on Tuesday assuming that you have downloaded and installed these packages and programs.
 
 ### ggplot2
 
