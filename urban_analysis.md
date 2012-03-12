@@ -7,7 +7,7 @@ We will be using the following software programs during class. The programs are 
 * Rstudio: [http://rstudio.org/](http://rstudio.org/)
 * QGIS: [http://www.qgis.org/](http://www.qgis.org/)
 	* 	mac: [gdal](http://www.kyngchaos.com/files/software/frameworks/GDAL_Complete-1.9.dmg) + [mac](http://www.kyngchaos.com/files/software/qgis/Qgis-1.7.4-4.dmg) 
-	* 	wimdows: [installer](http://www.qgis.org/downloads/QGIS-OSGeo4W-1.7.4-d211b16-Setup.exe)
+	* 	windows: [installer](http://www.qgis.org/downloads/QGIS-OSGeo4W-1.7.4-d211b16-Setup.exe)
 	* 	linux [instructions](http://hub.qgis.org/projects/quantum-gis/wiki/Download#Linux)
 
 Install `R` first, then install `RStudio`. After you install `R` try downloading and installing a package by pasting the following line into the command line editor:
