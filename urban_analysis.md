@@ -4,11 +4,14 @@
 We will be using the following software programs during class. The programs are all open-source and cross platform (win/mac/linux).
 
 * R: [http://www.r-project.org/](http://www.r-project.org/)
-* Rstudio: [http://rstudio.org/](http://rstudio.org/)
+	* mac: [mac dmg](http://cran.mtu.edu/bin/macosx/R-2.14.2.pkg)
+	* windows: [windows exe](http://cran.mtu.edu/bin/windows/base/R-2.14.2-win.exe) 
+	* linux: [instructions]()	
+	* RStudio: [http://rstudio.org/](http://rstudio.org/)
 * QGIS: [http://www.qgis.org/](http://www.qgis.org/)
 	* 	mac: [gdal](http://www.kyngchaos.com/files/software/frameworks/GDAL_Complete-1.9.dmg) + [qgis dmg](http://www.kyngchaos.com/files/software/qgis/Qgis-1.7.4-4.dmg) 
 	* 	windows: [qgis exe](http://www.qgis.org/downloads/QGIS-OSGeo4W-1.7.4-d211b16-Setup.exe)
-	* 	linux [instructions](http://hub.qgis.org/projects/quantum-gis/wiki/Download#Linux)
+	* 	linux: [instructions](http://hub.qgis.org/projects/quantum-gis/wiki/Download#Linux)
 
 Install `R` first, then install `RStudio`. After you install `R` try downloading and installing a package by pasting the following line into the command line editor:
 
