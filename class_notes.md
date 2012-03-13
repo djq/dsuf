@@ -15,13 +15,13 @@
 * `googleVis` 
 
 ### Data
-The datasets we will use are available on Stellar [here](http://stellar.mit.edu/S/course/4/sp12/4.474/materials.html). Make a folder for this class and unzip them into that folder.
+The datasets we will use are available on Stellar [here](http://stellar.mit.edu/S/course/4/sp12/4.474/materials.html). Make a folder for this class (preferably not on your desktop if you use Windows) and unzip the data into that folder.
 
 * Millenium Cities Data
-* Cambridge MA Data from [OpenstreetMap](http://www.openstreetmap.org/)
 * New York Building + Energy Data
+* Cambridge MA Data from [OpenstreetMap](http://www.openstreetmap.org/)
 
-(For the first example (Millenium Cities Data) you can access the data from the website; for the other examples you need to download the data.)
+(For the first example (Millenium Cities Data) you can access the data via the stellar website; for the other examples you need to download the data.)
 
 ### Introduction to R
 
@@ -175,6 +175,9 @@ Try making a facet-plot by zipcode illustrating energy use.
 * Choropleths
 * Rasterization
 * Polygonization
+
+We will use the Cambridge data on Thursday.
+
 
 ## 3: Map making in R	
 ### sp
