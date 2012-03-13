@@ -67,7 +67,7 @@ To access a column use the $ notation:
 On the ggplot2 website you can see many different types of plots. The most basic is the `qplot()` function; the more complicated plotting function is `ggplot()`. First try using `qplot` to examine some of the `mil_city` data.
 
 	# first we will plot urban density against road length
-	qplot(data=mil_city, x=Urban_density, y=Length_of_road_per_1000_people
+	qplot(data=mil_city, x=Urban_density, y=Length_of_road_per_1000_people)
 
 	
 You can make the same plot using `ggplot`. There are more ways of customizing things using `ggplot`
@@ -94,7 +94,7 @@ Let's break up the data into 'facets'. This is a powerful method for examining d
 
 
 * Try extending these plots by adding the previous dimensions, ilustrated by size or color.
-*
+
 
 ### ggplot2 logistics
 
@@ -107,6 +107,7 @@ Labeling your Axes:
 	# max/min - use + xlim(0,1000) + ylim(0,1000) (for example)
 	
 Saving your plot:
+	
 	plot1 <- ggplot(data = mil_city, aes(x = Urban_density, y = 	Length_of_road_per_1000_people)) + geom_point() + xlab('Pop. Dens (People/	Hectare)')
 	
 	ggsave() # puts in your working directory (see below, for exaplanation of working directory)
