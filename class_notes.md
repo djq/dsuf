@@ -110,6 +110,8 @@ Saving your plot:
 	
 	plot1 <- ggplot(data = mil_city, aes(x = Urban_density, y = 	Length_of_road_per_1000_people)) + geom_point() + xlab('Pop. Dens (People/	Hectare)')
 	
+Clear all your plots from the display, and try typing `plot1` into the console:
+	
 	ggsave() # puts in your working directory (see below, for exaplanation of working directory)
   
 	ggsave(plot1, file="millenium_cities.pdf", width=4, height=4)
