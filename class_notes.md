@@ -165,7 +165,7 @@ Now let's join this to tax-data, joining by zipcode keyword. I have aggregated t
 		
 Examine `elec` dataframe. Merge using `ZipCode` (note that spelling is identical in both dataframes, othewise the merge wll fail):
 
-	ny_data <- merge(mn, elec, 'ZipCode')
+	ny_data <- merge(mn, elec, by = 'ZipCode') # the 'by' term is optional here, but I am including for clarity
 	
 Try making a facet-plot by zipcode illustrating energy use.	
 ## 2: QGIS Intro
@@ -192,11 +192,11 @@ Load in the NY zipcode shapefile and the following libraries:
 	
 Now, load the spatial piece of `NY_Zip_Energy` (the `.shp`):
 	
-	demo <- readShapePoly('data/ny_zip/NY_Zip_Energy.shp') 
+	demo <- readShapePoly('ny_energy/NY_Zip_Energy.shp') 
 	
 And also load the attribute table for easy perusal:
 
-	att <- read.dbf('data/ny_zip/NY_Zip_Energy.dbf') 
+	att <- read.dbf('ny_energy/NY_Zip_Energy.dbf') 
 	
 You can make a plot using the following commands:
 	  
@@ -220,7 +220,7 @@ Fine tuning:
 	
 	spplot(demo, c("kWh_res","kWh_com"), col.regions = rainbow(100, start = 4/6, end = 1)) # tweaking colours
 
-Scale-bars and further refinement are not very easy to include. My preference is to use another program for organizing these  details using another program. However, there are a few approaches you can use for adjusting the colors:
+Scale-bars and further refinement are not very easy to include. My preference is to use another program for organizing these  details using another program. However, there are a few approaches you can use for adjusting the colors (you will need to install these packages):
 
 	library(classInt)
 	library(RColorBrewer)
@@ -229,13 +229,12 @@ Scale-bars and further refinement are not very easy to include. My preference is
 	# demo = readOGR("data/ny_zip/", "NY_Zip_Energy") # alternative method of reading in data
 	
 	brks.qt = classIntervals(demo$kWh_res, n = 7, style = "quantile")
-	brks.jk = classIntervals(demo$kWh_res, n = 7, style = "jenks")
 	brks.eq = classIntervals(demo$kWh_res, n = 7, style = "equal")
 	
 	# Example of one of the map plots
-	spplot(demo, "kWh_res", at=brks.eq$brks, col.regions=pal, col="transparent", main = list(label="Equal breaks"))
+	spplot(demo, "kWh_res", at=brks.eq$brks, col.regions=pal, col="transparent", main = list(label="Energy per ZipCode"))
 
-This example slightly modified from [here](http://gis.stackexchange.com/questions/3310/what-is-the-most-useful-spatial-r-trick)
+This example is slightly modified from [here](http://gis.stackexchange.com/questions/3310/what-is-the-most-useful-spatial-r-trick)
 
 #### Try:
 
