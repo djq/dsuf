@@ -18,10 +18,10 @@
 The datasets we will use are available on Stellar [here](http://stellar.mit.edu/S/course/4/sp12/4.474/materials.html). Make a folder for this class and unzip them into that folder.
 
 * Millenium Cities Data
-* Cambridge MA Data (from OpenstreetMap)
+* Cambridge MA Data from [OpenstreetMap](http://www.openstreetmap.org/)
 * New York Building + Energy Data
 
-(For demo 1 in R, you can access the data from the website but the others you need to download)
+(For the first example (Millenium Cities Data) you can access the data from the website; for the other examples you need to download the data.)
 
 ### Introduction to R
 
@@ -43,7 +43,7 @@ Load in the Millenium Cities Data:
 
 	# read in data
 	mil_city <- read.csv('http://stellar.mit.edu/S/course/4/sp12/4.474/courseMaterial/topics/topic5/resource/mil_city_small/mil_city_small.csv')
-
+	# here we are reading the data directly from a URL!
 	
 To see the top part of your data use the `head` command:
 
@@ -58,93 +58,88 @@ To access a column use the $ notation:
 	mil_city$Urban_density		
 
 
-## ggplot2
+### ggplot2
 
 [ggplot2](http://had.co.nz/ggplot2/) is a visualization and analysis package for R. We are going to focus on using some of the plotting functions, and illustrate facet-plotting. First load the library into your workspace:
 
 	library(ggplot2)	
 	
-On the ggplot2 website you can see many different types of plots. The most basic is the `qplot()` function; the more complicated plotting function is `ggplot()`. First try using `qplot` to examine some of the NY data.
+On the ggplot2 website you can see many different types of plots. The most basic is the `qplot()` function; the more complicated plotting function is `ggplot()`. First try using `qplot` to examine some of the `mil_city` data.
 
-	qplot(data=mn, x=YearBuilt, y=BldgArea)
-	
-This shows one huge value on the y-axis. Lets remove it (ignoring the underlying reasoning)
+	# first we will plot urban density against road length
+	qplot(data=mil_city, x=Urban_density, y=Length_of_road_per_1000_people
 
-	mn <- subset(mn, mn$BldgArea < 1e7)		# we are overwriting the dataframe 'mn'
-
-There also several 0 year values - remove them too
-	
-	mn <- subset(mn, mn$YearBuilt != 0)		# '!=' means 'does not equal'
-
-Now replot:
-	
-	qplot(data=mn, x=YearBuilt, y=BldgArea)
 	
 You can make the same plot using `ggplot`. There are more ways of customizing things using `ggplot`
 
-	ggplot(data=mn, aes(YearBuilt, BldgArea)) + geom_point() 	
+	ggplot(data = mil_city, aes(x = Urban_density, y = Length_of_road_per_1000_people)) + geom_point() 	
 	
-Now add a third dimension. We will use the amount of residential area to make the color (colour!) proportional to `ResArea`
+Now add a third dimension. We will group the data by color (colour!):
 
-	ggplot(data=mn, aes(YearBuilt, BldgArea)) + geom_point(aes(colour = ResArea))
+	ggplot(data = mil_city, aes(x = Urban_density, y = Length_of_road_per_1000_people)) + geom_point(aes(colour= Group))
 	
-Illustrate this third dimension using another approach. Use the amount of residential area to make the point proportional to `ResArea`
 
-	ggplot(data=mn, aes(YearBuilt, BldgArea)) + geom_point(aes(size = ResArea))
-	
-Put everything together (a little over the top and redundant, but still interesting)
+Adding a 4th dimension, we can make the point size proportional to the average car trip:
 
-	ggplot(data=mn, aes(YearBuilt, BldgArea)) + geom_point(aes(size = ResArea, colour=NumFloors))
+	ggplot(data = mil_city, aes(x = Urban_density, y = Length_of_road_per_1000_people)) + geom_point(aes(colour= Group, size=Average_time_of_a_car_trip))
 	
-#### Grouping data
+Here we used `geom_point()` but there are other types of plots such as lines (`geom_line()), area, etc.
 
-Boxplots:
+	
+#### Grouping data using ggplot2
 
-	ggplot(data=mn, aes(LandUse, YearBuilt)) + geom_boxplot()
-	
-Rexamining the data one more time, we will use a facet plots to explore patterns amongst groups:
+Let's break up the data into 'facets'. This is a powerful method for examining data in subsets
 
-	head(mn)
-	summary(mn)
-	unique(mn$ZipCode)		# see all the unique values to get an idea how many groups there are
-	
-Now, make a plot by these groups:
-	
-	# facet plot by zipcode
-	ggplot(data=mn, aes(YearBuilt, BldgArea)) + geom_point() + facet_grid(~ZipCode)
-	
-	# facet wrap by zipcode
-	ggplot(data=mn, aes(YearBuilt, BldgArea)) + geom_point() + facet_wrap(~ZipCode, nrow = 2)
-	
-#### Try:
-* extending these plots by adding the previous dimensions, ilustrated by size or color.
+	ggplot(data = mil_city, aes(x = Urban_density, y = Length_of_road_per_1000_people)) + geom_point() + facet_wrap(~Group)
 
-### Saving your plots
+
+* Try extending these plots by adding the previous dimensions, ilustrated by size or color.
+*
+
+### ggplot2 logistics
+
+Labeling your Axes:
+
+	# axes titles: xlab, ylab
+	ggplot(data = mil_city, aes(x = Urban_density, y = Length_of_road_per_1000_people)) + geom_point() + xlab('Pop. Dens (People/Hectare)')
+	# try adding ylab()
 	
-	plot <- ggplot(data=mn, aes(YearBuilt, BldgArea)) + geom_point()
-	ggsave()
-	ggsave(plot, file="plot.pdf", width=4, height=4)
+	# max/min - use + xlim(0,1000) + ylim(0,1000) (for example)
+	
+Saving your plot:
+	plot1 <- ggplot(data = mil_city, aes(x = Urban_density, y = 	Length_of_road_per_1000_people)) + geom_point() + xlab('Pop. Dens (People/	Hectare)')
+	
+	ggsave() # puts in your working directory (see below, for exaplanation of working directory)
+  
+	ggsave(plot1, file="millenium_cities.pdf", width=4, height=4)
 	
 	
-#### Try:
-* Calculating the mean and standard deviation of all columns
-* Examining the output of `summary(mn)`
+#### R is a language for statistical analysis:
+You can perform all types of standard analysis:
+* Try calculating the mean and standard deviation of all columns
+* Calculate the max value in `Urban_density`
 	
 
 ### Reading information from a shapefile
 
-We are going to focus on exploring non-spatial patterns first.
+We are going to focus on exploring non-spatial patterns from spatial data.
+
+First, set your working directory:
+	
+	# A shortcut of referring to the folder you are working in. e.g.
+	setwd('/Users/djq/Dropbox/4.474/')
 
 To read in a `dbf` file you can use the following command:
 	
-	library(foreign) 												# load a library that is installed by default in R
-	setwd('/Users/djq/Dropbox/dusp_viz')							# set your working directory
+	library(foreign) 		# load a library that is installed by default in R
+	setwd('/Users/djq/Dropbox/dusp_viz')		# set your working directory
 	attributeTable <- read.dbf('pathToShapefile/shapefileName.dbf') # note this is to the '.dbf' part of the shapefile. We are ignoring the spatial information
 
 The first shapefile we are using here is a sample of tax-assessors parcels from New York. Open it in QGIS to examine it, then read in the attribute table:
 
 	mn <- read.dbf('data/manhattan/mn_small.dbf')
 	
+Trying plotting some values from this table (If you would like more examples using this specific dataset you can follow instrauctions from an IAP class.)
 	
 
 ###	Joining more data to a dataframe
