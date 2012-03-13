@@ -136,14 +136,21 @@ We are going to focus on exploring non-spatial patterns from spatial data. First
 To read in a `dbf` file you can use the following command:
 	
 	library(foreign) 		# load a library that is installed by default in R
-	setwd('/Users/djq/Dropbox/dusp_viz')		# set your working directory
-	attributeTable <- read.dbf('pathToShapefile/shapefileName.dbf') # note this is to the '.dbf' part of the shapefile. We are ignoring the spatial information
-
-The first shapefile we are using here is a sample of tax-assessors parcels from New York. Open it in QGIS to examine it, then read in the attribute table:
-
-	mn <- read.dbf('data/manhattan/mn_small.dbf')
+	setwd('/Users/djq/Dropbox/4.474/')		# set your working directory
 	
-Trying plotting some values from this table (If you would like more examples using this specific dataset you can follow instrauctions from an IAP class.)
+The first shapefile we are using here is a sample of tax-assessors parcels from New York. Read in the attribute table:
+
+	mn <- read.dbf('data/manhattan/mn_small.dbf')  # note this is to the '.dbf' part of the shapefile. We are ignoring the spatial information
+	
+This shows one huge value on the y-axis. Lets remove it (ignoring the underlying reasoning)
+
+	mn <- subset(mn, mn$BldgArea < 1e7)		# we are overwriting the dataframe 'mn'
+
+There also several 0 year values - remove them too
+	
+	mn <- subset(mn, mn$YearBuilt != 0)		# '!=' means 'does not equal'
+	
+Trying plotting some values from this table (If you would like more examples using this specific dataset you can follow instructions from an [IAP](https://github.com/djq/dusp_viz/blob/master/urban_data.md) class.)
 	
 
 ###	Joining more data to a dataframe
@@ -159,8 +166,16 @@ Examine `elec` dataframe. Merge using `ZipCode` (note that spelling is identical
 	ny_data <- merge(mn, elec, 'ZipCode')
 	
 Try making a facet-plot by zipcode illustrating energy use.	
-	
-## sp
+## 2: QGIS Intro
+
+`QGIS` is a free GIS software. It is fast, and has a lot of features that are good for anlaysis. It's still not great for map making. I will give a quick demo on how to perform the following analyses (we will probably return to this on Thursday):
+
+* Choropleths
+* Rasterization
+* Polygonization
+
+## 3: Map making in R	
+### sp
 
 `sp` is another package in R that can be used for many spatial analyses. Here we are just using it to plot a shapefile.
 
@@ -218,7 +233,7 @@ Scale-bars and further refinement are not very easy to include. My preference is
 	# Example of one of the map plots
 	spplot(demo, "kWh_res", at=brks.eq$brks, col.regions=pal, col="transparent", main = list(label="Equal breaks"))
 
-This example slighlty modified from [here](http://gis.stackexchange.com/questions/3310/what-is-the-most-useful-spatial-r-trick)
+This example slightly modified from [here](http://gis.stackexchange.com/questions/3310/what-is-the-most-useful-spatial-r-trick)
 
 #### Try:
 
