@@ -114,7 +114,7 @@ Clear all your plots from the display, and try typing `plot1` into the console:
 	
 	ggsave() # puts in your working directory (see below, for explanation of working directory)
   
-	ggsave(plot1, file="millenium_cities.pdf", width=4, height=4)
+	ggsave(file="millenium_cities.pdf", plot1, width=4, height=4)
 	
 	
 #### R is a language for statistical analysis:
