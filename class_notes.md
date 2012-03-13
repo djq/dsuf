@@ -96,7 +96,7 @@ Let's break up the data into 'facets'. This is a powerful method for examining d
 * Try extending these plots by adding the previous dimensions, ilustrated by size or color.
 
 
-### ggplot2 logistics
+#### ggplot2 logistics
 
 Labeling your Axes:
 
@@ -119,15 +119,16 @@ Clear all your plots from the display, and try typing `plot1` into the console:
 	
 #### R is a language for statistical analysis:
 You can perform all types of standard analysis:
+
 * Try calculating the mean and standard deviation of all columns
 * Calculate the max value in `Urban_density`
 	
 
 ### Reading information from a shapefile
 
-We are going to focus on exploring non-spatial patterns from spatial data.
+A quick description of spatial data (in particular the (`shapefile`). Open the file, 
 
-First, set your working directory:
+We are going to focus on exploring non-spatial patterns from spatial data. First, set your working directory:
 	
 	# A shortcut of referring to the folder you are working in. e.g.
 	setwd('/Users/djq/Dropbox/4.474/')
