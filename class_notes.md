@@ -1,27 +1,27 @@
 ### Overview of class
 
 #### Part 1: R
-* Basics: loading data, installing packages, 
-* Exploring data, multiple dimensions
-* Loading data from spatial sources
+* Introduction: loading data, installing packages 
+* Exploring data: plotting, multiple dimensions, facetting
+* Loading data from spatial datasets
+* Merging datasets
 
 #### Part 2: QGIS
-* Basics: loading data, installing plugins
-* Simple calculations, spatial analysis
+* Introduction: loading data, installing plugins
+* Analysis: Simple calculations, spatial analysis
 * Basic "WalkScore" type calculation
 
 #### Part 3: If there is time...
 * `sp` and `maptools`: plot quick maps
-* `googleVis` 
 
 ### Data
 The datasets we will use are available on Stellar [here](http://stellar.mit.edu/S/course/4/sp12/4.474/materials.html). Make a folder for this class (preferably not on your desktop if you use Windows) and unzip the data into that folder.
 
 * Millenium Cities Data
-* New York Building + Energy Data
+* New York Buildings & Energy Data
 * Cambridge MA Data from [OpenstreetMap](http://www.openstreetmap.org/)
 
-(For the first example (Millenium Cities Data) you can access the data via the stellar website; for the other examples you need to download the data.)
+(For the first example `Millenium Cities Data` you can access the data via the stellar website; for the other examples you need to download the data.)
 
 ### Introduction to R
 
@@ -58,7 +58,7 @@ To access a column use the $ notation:
 	mil_city$Urban_density		
 
 
-### ggplot2
+### Exploring Data
 
 [ggplot2](http://had.co.nz/ggplot2/) is a visualization and analysis package for R. We are going to focus on using some of the plotting functions, and illustrate facet-plotting. First load the library into your workspace:
 
@@ -122,11 +122,15 @@ You can perform all types of standard analysis:
 
 * Try calculating the mean and standard deviation of all columns
 * Calculate the max value in `Urban_density`
+
+There are hundreds of packages for all types of analysis also.
 	
 
-### Reading information from a shapefile
+### Loading data from spatial datasets
 
-A quick description of spatial data (in particular the (`shapefile`). Open the file `mn_small.shp`. We are going to focus on exploring non-spatial patterns from spatial data. First, set your working directory:
+A quick description of spatial data (in particular the (`shapefile`).
+
+Open the file `mn_small.shp`. We are going to focus on exploring non-spatial patterns from spatial data. First, set your working directory:
 	
 	# A shortcut of referring to the folder you are working in. e.g.
 	setwd('/Users/djq/Dropbox/4.474/')
@@ -155,13 +159,14 @@ Trying plotting some values from this table. For example:
 If you would like more examples using this specific dataset you can follow instructions from an [IAP](https://github.com/djq/dusp_viz/blob/master/urban_data.md) class.
 	
 
-###	Joining more data to a dataframe
+### Merging Data
 
-Load a dataframe of zipfiles for New York:
+If you have two different datasets, with a common ID, how can you combine them?
+To explore this, load a dataframe of zipfiles for New York:
 
 	elec <- read.csv('ny_energy_per_zip.csv')
 
-Now let's join this to tax-data, joining by zipcode keyword. I have aggregated the values from an NYC dataset, available [here](http://nycopendata.socrata.com/Environmental-Sustainability/Electric-Consumption-by-ZIP-Code-2010/74cu-ncm4). (Note: Spatial joins are possible in `R` but are not covering them in this class, and I think that there are better tools for this purpose.)
+Now join this to the building/tax-data, by zipcode. I have aggregated the values from an NYC dataset, available [here](http://nycopendata.socrata.com/Environmental-Sustainability/Electric-Consumption-by-ZIP-Code-2010/74cu-ncm4). (Note: Spatial joins are possible in `R` but are not covering them in this class, and I think that there are better tools for this purpose.)
 		
 Examine `elec` dataframe. Merge using `ZipCode` (note that spelling is identical in both dataframes, othewise the merge wll fail):
 
@@ -179,7 +184,11 @@ Try making a facet-plot by zipcode illustrating energy use.
 We will use the Cambridge data on Thursday.
 
 
-## 3: Map making in R	
+## 3: Quick Map making in R 
+
+Pros: quick / scriptable 
+Cons: hard to customize
+	
 ### sp
 
 `sp` is another package in R that can be used for many spatial analyses. Here we are just using it to plot a shapefile.
@@ -223,7 +232,7 @@ Fine tuning:
 	
 	spplot(demo, c("kWh_res","kWh_com"), col.regions = rainbow(100, start = 4/6, end = 1)) # tweaking colours
 
-Scale-bars and further refinement are not very easy to include. My preference is to use another program for organizing these  details using another program. However, there are a few approaches you can use for adjusting the colors (you will need to install these packages):
+Scale-bars and further refinement are not very easy to include. My preference is to use another program for organizing these  details. However, there are a few approaches you can use for adjusting the colors (you will need to install these packages):
 
 	library(classInt)
 	library(RColorBrewer)
