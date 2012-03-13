@@ -187,6 +187,7 @@ We will use the Cambridge data on Thursday.
 ## 3: Quick Map making in R 
 
 Pros: quick / scriptable 
+
 Cons: hard to customize
 	
 ### sp
