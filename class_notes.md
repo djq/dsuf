@@ -112,7 +112,7 @@ Saving your plot:
 	
 Clear all your plots from the display, and try typing `plot1` into the console:
 	
-	ggsave() # puts in your working directory (see below, for exaplanation of working directory)
+	ggsave() # puts in your working directory (see below, for explanation of working directory)
   
 	ggsave(plot1, file="millenium_cities.pdf", width=4, height=4)
 	
@@ -126,21 +126,19 @@ You can perform all types of standard analysis:
 
 ### Reading information from a shapefile
 
-A quick description of spatial data (in particular the (`shapefile`). Open the file, 
-
-We are going to focus on exploring non-spatial patterns from spatial data. First, set your working directory:
+A quick description of spatial data (in particular the (`shapefile`). Open the file `mn_small.shp`. We are going to focus on exploring non-spatial patterns from spatial data. First, set your working directory:
 	
 	# A shortcut of referring to the folder you are working in. e.g.
 	setwd('/Users/djq/Dropbox/4.474/')
 
-To read in a `dbf` file you can use the following command:
+To read in a `dbf` file, you can use the following command:
 	
 	library(foreign) 		# load a library that is installed by default in R
-	setwd('/Users/djq/Dropbox/4.474/')		# set your working directory
+	setwd('/Users/djq/Dropbox/4.474/')		# set your working directory (example)
 	
 The first shapefile we are using here is a sample of tax-assessors parcels from New York. Read in the attribute table:
 
-	mn <- read.dbf('data/manhattan/mn_small.dbf')  # note this is to the '.dbf' part of the shapefile. We are ignoring the spatial information
+	mn <- read.dbf('manhattan/mn_small.dbf')  # note this is to the '.dbf' part of the shapefile. We are ignoring the spatial information
 	
 This shows one huge value on the y-axis. Lets remove it (ignoring the underlying reasoning)
 
@@ -150,25 +148,29 @@ There also several 0 year values - remove them too
 	
 	mn <- subset(mn, mn$YearBuilt != 0)		# '!=' means 'does not equal'
 	
-Trying plotting some values from this table (If you would like more examples using this specific dataset you can follow instructions from an [IAP](https://github.com/djq/dusp_viz/blob/master/urban_data.md) class.)
+Trying plotting some values from this table. For example:
+
+	ggplot(data=mn, aes(YearBuilt, BldgArea)) + geom_point(aes(colour = ResArea, alpha=0.5))    # alpha controls transparency, from 0 - 1
+	
+If you would like more examples using this specific dataset you can follow instructions from an [IAP](https://github.com/djq/dusp_viz/blob/master/urban_data.md) class.
 	
 
 ###	Joining more data to a dataframe
 
 Load a dataframe of zipfiles for New York:
 
-	elec <- read.csv('data/NY_Zip_energy.csv')
+	elec <- read.csv('ny_energy_per_zip.csv')
 
-Now let's join this to tax-data, joining by zipcode keyword. I have aggregated the values from an NYC dataset, available [here](http://nycopendata.socrata.com/Environmental-Sustainability/Electric-Consumption-by-ZIP-Code-2010/74cu-ncm4). (Note: Spatial joins are possible in `R` but are not covering them in this workshop.)
+Now let's join this to tax-data, joining by zipcode keyword. I have aggregated the values from an NYC dataset, available [here](http://nycopendata.socrata.com/Environmental-Sustainability/Electric-Consumption-by-ZIP-Code-2010/74cu-ncm4). (Note: Spatial joins are possible in `R` but are not covering them in this class, and I think that there are better tools for this purpose.)
 		
-Examine `elec` dataframe. Merge using `ZipCode` (note that spelling is identical in both dataframes):
+Examine `elec` dataframe. Merge using `ZipCode` (note that spelling is identical in both dataframes, othewise the merge wll fail):
 
 	ny_data <- merge(mn, elec, 'ZipCode')
 	
 Try making a facet-plot by zipcode illustrating energy use.	
 ## 2: QGIS Intro
 
-`QGIS` is a free GIS software. It is fast, and has a lot of features that are good for anlaysis. It's still not great for map making. I will give a quick demo on how to perform the following analyses (we will probably return to this on Thursday):
+`QGIS` is a free GIS software. It is fast, and has a lot of features that are good for analysis. It's still not great for map making. I will give a quick demo on how to perform the following analyses (we will probably return to this on Thursday):
 
 * Choropleths
 * Rasterization
